@@ -7,7 +7,6 @@ import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
-
 const Nav = () => {
   const { openSidebar } = useProductsContext()
   const { myUser } = useUserContext()
@@ -31,12 +30,12 @@ const Nav = () => {
               </li>
             )
           })}
+          {myUser && (
+            <li>
+              <Link to='/checkout'>checkout</Link>
+            </li>
+          )}
         </ul>
-        {myUser && (
-          <li>
-            <Link tp='/checkout'>checkout</Link>
-          </li>
-        )}
         <CartButtons />
       </div>
     </NavContainer>
@@ -48,7 +47,6 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-
   .nav-center {
     width: 90vw;
     margin: 0 auto;

@@ -3,18 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
 import {
   Home,
-  Products,
   SingleProduct,
-  About,
   Cart,
-  Error,
   Checkout,
+  Error,
+  About,
+  Products,
   PrivateRoute,
   AuthWrapper,
 } from './pages'
-
-import styled from 'styled-components'
-
 function App() {
   return (
     <AuthWrapper>
@@ -25,20 +22,20 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route exact path='/about'>
+          <Route path='/about'>
             <About />
           </Route>
-          <Route exact path='/cart'>
+          <Route path='/cart'>
             <Cart />
           </Route>
           <Route exact path='/products'>
             <Products />
           </Route>
-          <Route exact path='/products/:id' children={<SingleProduct />} />
-          <PrivateRoute exact path='/checkout'>
+          <Route path='/products/:id' children={<SingleProduct />} />
+          <PrivateRoute path='/checkout'>
             <Checkout />
           </PrivateRoute>
-          <Route to='*'>
+          <Route path='*'>
             <Error />
           </Route>
         </Switch>
